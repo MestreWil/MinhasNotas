@@ -41,7 +41,7 @@ namespace MinhasNotas.Controllers
             {
                 return NotFound();
             }
-
+            student.Grades = _context.Grades.Where(x => x.StudentId == id).Include("Subject").ToList();
             return View(student);
         }
 

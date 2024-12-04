@@ -28,5 +28,12 @@ namespace MinhasNotas.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        [HttpPost]
+        public IActionResult Login([FromBody] string Email, string Password)
+        {
+
+            return RedirectToAction("Create", "Students");
+        }
     }
 }
