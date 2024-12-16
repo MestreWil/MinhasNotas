@@ -49,8 +49,8 @@ namespace MinhasNotas.Controllers
         // GET: Grades/Create
         public IActionResult Create()
         {
-            ViewData["StudentId"] = new SelectList(_context.Student, "Id", "EmailAddress");
-            ViewData["SubjectId"] = new SelectList(_context.Subject, "Id", "Id");
+            ViewData["StudentId"] = new SelectList(_context.Student, "Id", "Name");
+            ViewData["SubjectId"] = new SelectList(_context.Subject, "Id", "Name");
             return View();
         }
 
@@ -61,15 +61,16 @@ namespace MinhasNotas.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Grade,DataTest,StudentId,SubjectId")] Grades grades)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(grades);
+            //if (ModelState.IsValid)
+            //{
+             grades.Grade = Convert.ToDouble(grades.Grade.ToString("F2"));
+            _context.Add(grades);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
-            }
-            ViewData["StudentId"] = new SelectList(_context.Student, "Id", "EmailAddress", grades.StudentId);
-            ViewData["SubjectId"] = new SelectList(_context.Subject, "Id", "Id", grades.SubjectId);
-            return View(grades);
+            //}
+           // ViewData["StudentId"] = new SelectList(_context.Student, "Id", "EmailAddress", grades.StudentId);
+            //ViewData["SubjectId"] = new SelectList(_context.Subject, "Id", "Id", grades.SubjectId);
+            //return View(grades);
         }
 
         // GET: Grades/Edit/5
@@ -85,8 +86,8 @@ namespace MinhasNotas.Controllers
             {
                 return NotFound();
             }
-            ViewData["StudentId"] = new SelectList(_context.Student, "Id", "EmailAddress", grades.StudentId);
-            ViewData["SubjectId"] = new SelectList(_context.Subject, "Id", "Id", grades.SubjectId);
+            ViewData["StudentId"] = new SelectList(_context.Student, "Id", "Name", grades.StudentId);
+            ViewData["SubjectId"] = new SelectList(_context.Subject, "Id", "Name", grades.SubjectId);
             return View(grades);
         }
 
@@ -102,11 +103,12 @@ namespace MinhasNotas.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
                 try
                 {
-                    _context.Update(grades);
+                grades.Grade = Convert.ToDouble(grades.Grade.ToString("F2"));
+                _context.Update(grades);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -121,10 +123,10 @@ namespace MinhasNotas.Controllers
                     }
                 }
                 return RedirectToAction(nameof(Index));
-            }
-            ViewData["StudentId"] = new SelectList(_context.Student, "Id", "EmailAddress", grades.StudentId);
-            ViewData["SubjectId"] = new SelectList(_context.Subject, "Id", "Id", grades.SubjectId);
-            return View(grades);
+           // }
+           // ViewData["StudentId"] = new SelectList(_context.Student, "Id", "EmailAddress", grades.StudentId);
+            //ViewData["SubjectId"] = new SelectList(_context.Subject, "Id", "Id", grades.SubjectId);
+            //return View(grades);
         }
 
         // GET: Grades/Delete/5
@@ -161,14 +163,14 @@ namespace MinhasNotas.Controllers
             {
                 _context.Grades.Remove(grades);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool GradesExists(int id)
         {
-          return (_context.Grades?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Grades?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

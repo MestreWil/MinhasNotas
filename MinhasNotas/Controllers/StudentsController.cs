@@ -159,5 +159,49 @@ namespace MinhasNotas.Controllers
         {
           return (_context.Student?.Any(e => e.Id == id)).GetValueOrDefault();
         }
+        /*public IActionResult StudentGrades(int studentId)
+        {
+            // Obtém as notas e médias do aluno por disciplina
+             var studentGrades = _context.Student
+                 .Where(s => s.Id == studentId)
+                 .Select(s => new
+                     {
+                     s.Name,
+                     Grades = s.Grades
+                         .GroupBy(g => g.Subject)
+                         .Select(g => new
+                         {
+                             SubjectName = g.Key.Name,
+                             Grades = g.Select(x => x.Grade).ToList(),
+                             Average = g.Average(x => x.Grade)
+                         })
+                 })  
+                 .ToList();
+
+            var studentGrades = _context.Grades
+                .Where(g => g.StudentId == studentId)
+                .ToList();
+            var medias = studentGrades.Select(s => new
+            {
+                s.Name,
+                Grades = s.Grades
+                         .GroupBy(g => g.Subject)
+                         .Select(g => new
+                         {
+                             SubjectName = g.Key.Name,
+                             Grades = g.Select(x => x.Grade).ToList(),
+                             Average = g.Average(x => x.Grade)
+                         })
+            })
+                 .ToList();
+            if (studentGrades <= 0)
+            {
+                return NotFound();
+            }
+
+            // Retorna a view com o modelo de notas do aluno
+            return View(studentGrades);
+        }*/
+        
     }
 }

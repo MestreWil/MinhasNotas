@@ -12,6 +12,7 @@ namespace MinhasNotas.Models
         [DisplayName("Email")]
         [Required(ErrorMessage = "Campo Obrigatório")]
         public string EmailAddress { get; set; }
+
         public DateTime BirthDate { get; set; }
         [DisplayName("Senha")]
         [Required(ErrorMessage = "Campo Obrigatório")]

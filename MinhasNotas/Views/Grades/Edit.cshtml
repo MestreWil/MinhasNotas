@@ -4,9 +4,8 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h1>Editar Nota</h1>
 
-<h4>Grades</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -14,22 +13,22 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label asp-for="Grade" class="control-label"></label>
-                <input asp-for="Grade" class="form-control" />
+                <label asp-for="Grade" class="control-label">Nota</label>
+                <input asp-for="Grade" class="form-control" step="0.01" type="number" />
                 <span asp-validation-for="Grade" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DataTest" class="control-label"></label>
+                <label asp-for="DataTest" class="control-label">Data e Hora da Prova</label>
                 <input asp-for="DataTest" class="form-control" />
                 <span asp-validation-for="DataTest" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="StudentId" class="control-label"></label>
+                <label asp-for="StudentId" class="control-label">Estudante</label>
                 <select asp-for="StudentId" class="form-control" asp-items="ViewBag.StudentId"></select>
                 <span asp-validation-for="StudentId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="SubjectId" class="control-label"></label>
+                <label asp-for="SubjectId" class="control-label">Disciplina</label>
                 <select asp-for="SubjectId" class="form-control" asp-items="ViewBag.SubjectId"></select>
                 <span asp-validation-for="SubjectId" class="text-danger"></span>
             </div>
@@ -41,7 +40,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="btn btn-secondary">Voltar</a>
 </div>
 
 @section Scripts {

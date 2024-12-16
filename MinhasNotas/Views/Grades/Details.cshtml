@@ -4,39 +4,38 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1>Nota</h1>
 
 <div>
-    <h4>Grades</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Grade)
+            Nota
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Grade)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DataTest)
+            Data e Hora da Prova
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.DataTest)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Student)
+            Aluno
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Student.EmailAddress)
+            @Html.DisplayFor(model => model.Student.Name)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Subject)
+            Disciplina
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Subject.Id)
+            @Html.DisplayFor(model => model.Subject.Name)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" class="btn btn-warning" asp-route-id="@Model?.Id">Editar Disciplina</a> |
+    <a asp-action="Index" class="btn btn-secondary">Voltar</a>
 </div>

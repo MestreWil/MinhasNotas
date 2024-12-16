@@ -1,0 +1,25 @@
+﻿@model dynamic
+
+<h2>Notas do Aluno: @Model.Name</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Disciplina</th>
+            <th>Notas</th>
+            <th>Média</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var grade in Model.Grades)
+        {
+            <tr>
+                <td>@grade.SubjectId</td>
+                <td>
+                    @string.Join(", ", grade.Grades)
+                </td>
+                <td>@grade.Average.ToString("F2")</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -154,15 +154,6 @@ namespace MinhasNotas.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-        [HttpPost]
-        public async Task<IActionResult> LancarNota(Grades Grade)
-        {
-            _context.Add(Grade);
-            await _context.SaveChangesAsync();
-            ViewData["StudentId"] = new SelectList(_context.Student, "Id", "Name");
-            
-            return View();
-        }
 
         private bool TeacherExists(int id)
         {

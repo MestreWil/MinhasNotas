@@ -4,10 +4,10 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Professores Cadastrados</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-primary" >Cadastrar Novo Professor</a>
 </p>
 <table class="table">
     <thead>
@@ -19,10 +19,7 @@
                 @Html.DisplayNameFor(model => model.EmailAddress)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.BirthDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Password)
+                Data de Nascimento
             </th>
             <th></th>
         </tr>
@@ -40,12 +37,9 @@
                 @Html.DisplayFor(modelItem => item.BirthDate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Password)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    <a asp-action="Edit" class="btn btn-warning" asp-route-id="@item.Id">Editar Informações</a> 
+                    <a asp-action="Details" class="btn btn-info" asp-route-id="@item.Id">Detalhes</a> 
+                    <a asp-action="Delete" class="btn btn-danger"  asp-route-id="@item.Id">Excluir Professor</a>
             </td>
         </tr>
 }

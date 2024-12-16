@@ -16,6 +16,6 @@ namespace MinhasNotas.Models
         [DisplayName("Senha")]
         [Required(ErrorMessage = "Campo Obrigatorio")]
         public string Password { get; set; }
-        public List<Grades> Grades { get; set; } = new List<Grades>();
+        public List<Grades> Grades { get; set; } = new List<Grades>(); 
     }
 }

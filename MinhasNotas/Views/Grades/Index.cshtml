@@ -4,25 +4,25 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Banco de Notas</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-primary">Lançar Nota</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Grade)
+                Nota
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DataTest)
+                Data e Hora da Prova
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Student)
+                Estudante
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Subject)
+                Disciplina
             </th>
             <th></th>
         </tr>
@@ -37,15 +37,15 @@
                 @Html.DisplayFor(modelItem => item.DataTest)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Student.EmailAddress)
+                @Html.DisplayFor(modelItem => item.Student.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Subject.Id)
+                @Html.DisplayFor(modelItem => item.Subject.Name)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    <a asp-action="Edit" class="btn btn-warning" asp-route-id="@item.Id">Editar Nota</a> 
+                    <a asp-action="Details" class="btn btn-info"  asp-route-id="@item.Id">Informações</a> 
+                    <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.Id">Apagar</a>
             </td>
         </tr>
 }

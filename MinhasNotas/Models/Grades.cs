@@ -1,8 +1,11 @@
-﻿namespace MinhasNotas.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace MinhasNotas.Models
 {
     public class Grades
     {
         public int Id { get; set; }
+        [Column(TypeName = "double")]
         public double Grade { get; set; }
         public DateTime DataTest { get; set; }
         public int StudentId { get; set; }
